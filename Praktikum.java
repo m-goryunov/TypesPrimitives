@@ -60,7 +60,7 @@ public class Praktikum {
         printFlag();
         // Напишите логические выражения для определения победителя
         boolean shortRaceWin = (distance<=15)&&(userCar.acceleration > opponentCar.acceleration);// на короткой дистанции
-        boolean longRaceWin = (distance<50)&&(userCar.maxSpeed > opponentCar.maxSpeed); // на длинной дистанции
+        boolean longRaceWin = (distance>50)&&(userCar.maxSpeed > opponentCar.maxSpeed); // на длинной дистанции
 
         if ((shortRaceWin || longRaceWin)) { // если победил на короткой или на длинной дистанции
             System.out.println("Вы выиграли!");
@@ -69,15 +69,15 @@ public class Praktikum {
             return userCar.score;
         } else if (userCar.acceleration == opponentCar.acceleration) { // Уровни ускорения должны быть равны
             System.out.println("Ничья!");
-            return userCar.score;
+            return 0;
         } else {
             // Сравните уровни закиси азота
             if (userCar.nitroLevel > opponentCar.nitroLevel) {
                 System.out.println("Вы проиграли, но благодаря закиси азота сохранили очки.");
-                return userCar.score;
+                return 0;
             } else {
                 System.out.println("Вы проиграли(");
-                return userCar.score = userCar.score -100;
+                return -100;
             }
         }
     }
@@ -132,7 +132,7 @@ public class Praktikum {
 
     private static Integer getNitroLevel(int nitroLevel) {
         // Пропишите логику по конвертации параметра nitroLevel
-        if(nitroLevel== 0) {
+        if(nitroLevel == 0){
             return null;
         } else {
             return nitroLevel;
